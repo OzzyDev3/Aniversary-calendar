@@ -11,12 +11,12 @@ interface Couple {
 export default function App() {
   const [activeTab, setActiveTab] = useState<'datos' | 'calendario'>('datos');
   const [couples, setCouples] = useState<Couple[]>(() => {
-    const saved = localStorage.getItem('kawaii_anniversaries');
+    const saved = localStorage.getItem('anniversaries');
     return saved ? JSON.parse(saved) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem('kawaii_anniversaries', JSON.stringify(couples));
+    localStorage.setItem('anniversaries', JSON.stringify(couples));
   }, [couples]);
 
   return (
@@ -25,7 +25,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
           <h1 className="text-3xl font-extrabold text-pink-400 flex items-center gap-2">
             <Heart className="text-pink-400 fill-pink-400" />
-            Aniversarios Kawaii
+            Aniversarios 
           </h1>
           <nav className="flex gap-2">
             <button
@@ -118,7 +118,7 @@ function DatosTab({ couples, setCouples }: { couples: Couple[], setCouples: Reac
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'aniversarios_kawaii.json';
+    link.download = 'aniversarios_.json';
     link.click();
     URL.revokeObjectURL(url);
   };
@@ -171,7 +171,7 @@ function DatosTab({ couples, setCouples }: { couples: Couple[], setCouples: Reac
             />
           </div>
           <div className="space-y-2 md:col-span-2">
-            <label className="block font-bold text-pink-400">Imagen Kawaii 📸</label>
+            <label className="block font-bold text-pink-400">Imagen 📸</label>
             <div className="flex items-center gap-4">
               <label className="cursor-pointer bg-pink-100 hover:bg-pink-200 text-pink-600 px-4 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 border-2 border-pink-200 border-dashed">
                 <ImageIcon size={20} />
